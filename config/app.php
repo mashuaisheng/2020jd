@@ -227,5 +227,5 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
     ],
-    'pageSize'=>4,
+    'pageSize'=>10,
 ];

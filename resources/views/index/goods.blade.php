@@ -2,7 +2,7 @@
       @section('title','详情页')
 
       @section('contents')
-	<div class="py-container">
+	<div class="py-container" goods_id="{{$goods['goods_id']}}">
 		<div id="item">
 			<div class="crumb-wrap">
 				<ul class="sui-breadcrumb">
@@ -25,7 +25,9 @@
 					<div class="zoom">
 						<!--默认第一个预览-->
 						<div id="preview" class="spec-preview">
-							<span class="jqzoom"><img jqimg="/static/img/_/b1.png" src="/static/img/_/s1.png" /></span>
+							<span class="jqzoom">
+								<img jqimg="{{env('UPLOAD_URL')}}{{$goods['goods_img']}}" src="{{env('UPLOAD_URL')}}{{$goods['goods_img']}}" />
+							</span>
 						</div>
 						<!--下方的缩略图-->
 						<div class="spec-scroll">
@@ -33,15 +35,10 @@
 							<!--左右按钮-->
 							<div class="items">
 								<ul>
-									<li><img src="/static/img/_/s1.png" bimg="/static/img/_/b1.png" onmousemove="preview(this)" /></li>
-									<li><img src="/static/img/_/s2.png" bimg="/static/img/_/b2.png" onmousemove="preview(this)" /></li>
-									<li><img src="/static/img/_/s3.png" bimg="/static/img/_/b3.png" onmousemove="preview(this)" /></li>
-									<li><img src="/static/img/_/s1.png" bimg="/static/img/_/b1.png" onmousemove="preview(this)" /></li>
-									<li><img src="/static/img/_/s2.png" bimg="/static/img/_/b2.png" onmousemove="preview(this)" /></li>
-									<li><img src="/static/img/_/s3.png" bimg="/static/img/_/b3.png" onmousemove="preview(this)" /></li>
-									<li><img src="/static/img/_/s1.png" bimg="/static/img/_/b1.png" onmousemove="preview(this)" /></li>
-									<li><img src="/static/img/_/s2.png" bimg="/static/img/_/b2.png" onmousemove="preview(this)" /></li>
-									<li><img src="/static/img/_/s3.png" bimg="/static/img/_/b3.png" onmousemove="preview(this)" /></li>
+									<li><img src="{{env('UPLOAD_URL')}}{{$goods['goods_img']}}" bimg="/static/img/_/b1.png" onmousemove="preview(this)" /></li>
+									<li><img src="{{env('UPLOAD_URL')}}{{$goods['goods_img']}}" bimg="/static/img/_/b2.png" onmousemove="preview(this)" /></li>
+									<li><img src="{{env('UPLOAD_URL')}}{{$goods['goods_img']}}" bimg="/static/img/_/b2.png" onmousemove="preview(this)" /></li>
+									<li><img src="{{env('UPLOAD_URL')}}{{$goods['goods_img']}}" bimg="/static/img/_/b3.png" onmousemove="preview(this)" /></li>
 								</ul>
 							</div>
 							<a class="next">&gt;</a>
@@ -50,7 +47,7 @@
 				</div>
 				<div class="fr itemInfo-wrap">
 					<div class="sku-name">
-						<h4>Apple iPhone 6s（A1700）64G玫瑰金色 移动通信电信4G手机</h4>
+						<h4>{{$goods['goods_name']}}</h4>
 					</div>
 					<div class="news"><span>推荐选择下方[移动优惠购],手机套餐齐搞定,不用换号,每月还有花费返</span></div>
 					<div class="summary">
@@ -60,11 +57,11 @@
 							</div>
 							<div class="fl price">
 								<i>¥</i>
-								<em>5299.00</em>
+								<em>{{$goods['shop_price']}}</em>
 								<span>降价通知</span>
 							</div>
 							<div class="fr remark">
-								<i>累计评价</i><em>612188</em>
+								<i>累计评价</i><em>{{$goods['click_count']}}</em>
 							</div>
 						</div>
 						<div class="summary-wrap">
@@ -73,7 +70,7 @@
 							</div>
 							<div class="fl fix-width">
 								<i class="red-bg">加价购</i>
-								<em class="t-gray">满999.00另加20.00元，或满1999.00另加30.00元，或满2999.00另加40.00元，即可在购物车换
+								<em class="t-gray">满999.00另加20.00元，
 购热销商品</em>
 							</div>
 						</div>
@@ -93,6 +90,7 @@
 							</div>
 							<div class="fl fix-width">
 								<em class="t-gray">满999.00另加20.00元，或满1999.00另加30.00元，或满2999.00另加40.00元，即可在购物车换购热销商品</em>
+								库存：<span id="goods_number">{{$goods['goods_number']}}</span>
 							</div>
 						</div>
 					</div>
@@ -109,17 +107,7 @@
 								<dd><a href="javascript:;">银色</a></dd>
 								<dd><a href="javascript:;">黑色</a></dd>
 							</dl>
-							<dl>
-								<dt>
-									<div class="fl title">
-									<i>内存容量</i>
-								</div>
-								</dt>
-								<dd><a href="javascript:;" class="selected">16G<span title="点击取消选择">&nbsp;</span>
-</a></dd>
-								<dd><a href="javascript:;">64G</a></dd>
-								<dd><a href="javascript:;" class="locked">128G</a></dd>
-							</dl>
+							
 							<dl>
 								<dt>
 									<div class="fl title">
@@ -130,54 +118,22 @@
 </a></dd>
 								<dd><a href="javascript:;">移动版</a></dd>							
 							</dl>
-							<dl>
-								<dt>
-									<div class="fl title">
-									<i>购买方式</i>
-								</div>
-								</dt>
-								<dd><a href="javascript:;" class="selected">官方标配<span title="点击取消选择">&nbsp;</span>
-</a></dd>
-								<dd><a href="javascript:;">移动优惠版</a></dd>	
-								<dd><a href="javascript:;"  class="locked">电信优惠版</a></dd>
-							</dl>
-							<dl>
-								<dt>
-									<div class="fl title">
-									<i>套　　装</i>
-								</div>
-								</dt>
-								<dd><a href="javascript:;" class="selected">保护套装<span title="点击取消选择">&nbsp;</span>
-</a></dd>
-								<dd><a href="javascript:;"  class="locked">充电套装</a></dd>	
-								
-							</dl>
-							
-							
 						</div>
-						
-						
-						
-						
-						
-						
-						
-						
-						
+						<input type="hidden" value="{{$goods['goods_id']}}" goods_id="{{$goods['goods_id']}}" id="goods_id">
 						<div class="summary-wrap">
 							<div class="fl title">
 								<div class="control-group">
 									<div class="controls">
-										<input autocomplete="off" type="text" value="1" minnum="1" class="itxt" />
-										<a href="javascript:void(0)" class="increment plus">+</a>
-										<a href="javascript:void(0)" class="increment mins">-</a>
+										<input autocomplete="off" type="text" value="1" minnum="1" class="itxt" id="buy_number" />
+										<a href="javascript:void(0)" class="increment plus" id="add">+</a>
+										<a href="javascript:void(0)" class="increment mins" id="less">-</a>
 									</div>
 								</div>
 							</div>
 							<div class="fl">
 								<ul class="btn-choose unstyled">
 									<li>
-										<a href="cart.html" target="_blank" class="sui-btn  btn-danger addshopcar">加入购物车</a>
+										<a href="javascript:void(0)" class="sui-btn  btn-danger addshopcar" id="addcart">加入购物车</a>
 									</li>
 								</ul>
 							</div>
@@ -437,6 +393,7 @@
 			</div>
 			<!--like-->
 			<div class="clearfix"></div>
+			<!-- 猜你喜欢 -->
 			<div class="like">
 				<h4 class="kt">猜你喜欢</h4>
 				<div class="like-list">
@@ -447,7 +404,7 @@
 									<img src="/static/img/_/itemlike01.png" />
 								</div>
 								<div class="attr">
-									<em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
+									<em>DELL戴尔Ins 15MR-7528SS 15</em>
 								</div>
 								<div class="price">
 									<strong>
@@ -466,7 +423,7 @@
 									<img src="/static/img/_/itemlike02.png" />
 								</div>
 								<div class="attr">
-									<em>Apple苹果iPhone 6s/6s Plus 16G 64G 128G</em>
+									<em>Apple苹果iPhone 6s/6s Plus 16</em>
 								</div>
 								<div class="price">
 									<strong>
@@ -485,7 +442,7 @@
 									<img src="/static/img/_/itemlike03.png" />
 								</div>
 								<div class="attr">
-									<em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
+									<em>DELL戴尔Ins 15MR-7528SS 15</em>
 								</div>
 								<div class="price">
 									<strong>
@@ -504,7 +461,7 @@
 									<img src="/static/img/_/itemlike04.png" />
 								</div>
 								<div class="attr">
-									<em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
+									<em>DELL戴尔Ins 15MR-7528SS 15</em>
 								</div>
 								<div class="price">
 									<strong>
@@ -523,7 +480,7 @@
 									<img src="/static/img/_/itemlike05.png" />
 								</div>
 								<div class="attr">
-									<em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
+									<em>DELL戴尔Ins 15MR-7528SS 15</em>
 								</div>
 								<div class="price">
 									<strong>
@@ -542,7 +499,7 @@
 									<img src="/static/img/_/itemlike06.png" />
 								</div>
 								<div class="attr">
-									<em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
+									<em>DELL戴尔Ins 15MR-7528SS 15</em>
 								</div>
 								<div class="price">
 									<strong>
@@ -562,155 +519,77 @@
 	</div>
 	@endsection
 	
-	<!--侧栏面板开始-->
-<div class="J-global-toolbar">
-	<div class="toolbar-wrap J-wrap">
-		<div class="toolbar">
-			<div class="toolbar-panels J-panel">
-
-				<!-- 购物车 -->
-				<div style="visibility: hidden;" class="J-content toolbar-panel tbar-panel-cart toolbar-animate-out">
-					<h3 class="tbar-panel-header J-panel-header">
-						<a href="" class="title"><i></i><em class="title">购物车</em></a>
-						<span class="close-panel J-close" onclick="cartPanelView.tbar_panel_close('cart');" ></span>
-					</h3>
-					<div class="tbar-panel-main">
-						<div class="tbar-panel-content J-panel-content">
-							<div id="J-cart-tips" class="tbar-tipbox hide">
-								<div class="tip-inner">
-									<span class="tip-text">还没有登录，登录后商品将被保存</span>
-									<a href="#none" class="tip-btn J-login">登录</a>
-								</div>
-							</div>
-							<div id="J-cart-render">
-								<!-- 列表 -->
-								<div id="cart-list" class="tbar-cart-list">
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- 小计 -->
-					<div id="cart-footer" class="tbar-panel-footer J-panel-footer">
-						<div class="tbar-checkout">
-							<div class="jtc-number"> <strong class="J-count" id="cart-number">0</strong>件商品 </div>
-							<div class="jtc-sum"> 共计：<strong class="J-total" id="cart-sum">¥0</strong> </div>
-							<a class="jtc-btn J-btn" href="#none" target="_blank">去购物车结算</a>
-						</div>
-					</div>
-				</div>
-
-				<!-- 我的关注 -->
-				<div style="visibility: hidden;" data-name="follow" class="J-content toolbar-panel tbar-panel-follow">
-					<h3 class="tbar-panel-header J-panel-header">
-						<a href="#" target="_blank" class="title"> <i></i> <em class="title">我的关注</em> </a>
-						<span class="close-panel J-close" onclick="cartPanelView.tbar_panel_close('follow');"></span>
-					</h3>
-					<div class="tbar-panel-main">
-						<div class="tbar-panel-content J-panel-content">
-							<div class="tbar-tipbox2">
-								<div class="tip-inner"> <i class="i-loading"></i> </div>
-							</div>
-						</div>
-					</div>
-					<div class="tbar-panel-footer J-panel-footer"></div>
-				</div>
-
-				<!-- 我的足迹 -->
-				<div style="visibility: hidden;" class="J-content toolbar-panel tbar-panel-history toolbar-animate-in">
-					<h3 class="tbar-panel-header J-panel-header">
-						<a href="#" target="_blank" class="title"> <i></i> <em class="title">我的足迹</em> </a>
-						<span class="close-panel J-close" onclick="cartPanelView.tbar_panel_close('history');"></span>
-					</h3>
-					<div class="tbar-panel-main">
-						<div class="tbar-panel-content J-panel-content">
-							<div class="jt-history-wrap">
-								<ul>
-									<!--<li class="jth-item">
-										<a href="#" class="img-wrap"> <img src=".portal//static/img/like_03.png" height="100" width="100" /> </a>
-										<a class="add-cart-button" href="#" target="_blank">加入购物车</a>
-										<a href="#" target="_blank" class="price">￥498.00</a>
-									</li>
-									<li class="jth-item">
-										<a href="#" class="img-wrap"> <img src="portal//static/img/like_02.png" height="100" width="100" /></a>
-										<a class="add-cart-button" href="#" target="_blank">加入购物车</a>
-										<a href="#" target="_blank" class="price">￥498.00</a>
-									</li>-->
-								</ul>
-								<a href="#" class="history-bottom-more" target="_blank">查看更多足迹商品 &gt;&gt;</a>
-							</div>
-						</div>
-					</div>
-					<div class="tbar-panel-footer J-panel-footer"></div>
-				</div>
-
-			</div>
-
-			<div class="toolbar-header"></div>
-
-			<!-- 侧栏按钮 -->
-			<div class="toolbar-tabs J-tab">
-				<div onclick="cartPanelView.tabItemClick('cart')" class="toolbar-tab tbar-tab-cart" data="购物车" tag="cart" >
-					<i class="tab-ico"></i>
-					<em class="tab-text"></em>
-					<span class="tab-sub J-count " id="tab-sub-cart-count">0</span>
-				</div>
-				<div onclick="cartPanelView.tabItemClick('follow')" class="toolbar-tab tbar-tab-follow" data="我的关注" tag="follow" >
-					<i class="tab-ico"></i>
-					<em class="tab-text"></em>
-					<span class="tab-sub J-count hide">0</span>
-				</div>
-				<div onclick="cartPanelView.tabItemClick('history')" class="toolbar-tab tbar-tab-history" data="我的足迹" tag="history" >
-					<i class="tab-ico"></i>
-					<em class="tab-text"></em>
-					<span class="tab-sub J-count hide">0</span>
-				</div>
-			</div>
-
-			<div class="toolbar-footer">
-				<div class="toolbar-tab tbar-tab-top" > <a href="#"> <i class="tab-ico  "></i> <em class="footer-tab-text">顶部</em> </a> </div>
-				<div class="toolbar-tab tbar-tab-feedback" > <a href="#" target="_blank"> <i class="tab-ico"></i> <em class="footer-tab-text ">反馈</em> </a> </div>
-			</div>
-
-			<div class="toolbar-mini"></div>
-
-		</div>
-
-		<div id="J-toolbar-load-hook"></div>
-
-	</div>
-</div>
-<!--购物车单元格 模板-->
-<script type="text/template" id="tbar-cart-item-template">
-	<div class="tbar-cart-item" >
-		<div class="jtc-item-promo">
-			<em class="promo-tag promo-mz">满赠<i class="arrow"></i></em>
-			<div class="promo-text">已购满600元，您可领赠品</div>
-		</div>
-		<div class="jtc-item-goods">
-			<span class="p-img"><a href="#" target="_blank"><img src="{2}" alt="{1}" height="50" width="50" /></a></span>
-			<div class="p-name">
-				<a href="#">{1}</a>
-			</div>
-			<div class="p-price"><strong>¥{3}</strong>×{4} </div>
-			<a href="#none" class="p-del J-del">删除</a>
-		</div>
-	</div>
-</script>
-<!--侧栏面板结束-->
 	
+	
+<script type="text/javascript" src="/static/plugins/jquery/jquery.min.js"></script>
 
 <script type="text/javascript">
-$(function(){
-	$("#service").hover(function(){
-		$(".service").show();
-	},function(){
-		$(".service").hide();
-	});
-	$("#shopcar").hover(function(){
-		$("#shopcarlist").show();
-	},function(){
-		$("#shopcarlist").hide();
-	});
+	//给id为add绑定点击事件  ===点击 +
+        $(document).on("click","#add",function(){
+            //获取文本框的购买数量
+            var buy_number=parseInt($("#buy_number").val());
+            //获取库存
+            var goods_number=parseInt($("#goods_number").text());
+            // 判断购买数量是否大于库存
+            if(buy_number>=goods_number){
+                $("#buy_number").val(goods_number);//判断购买数量>=库存的值
+            }else{
+                buy_number=buy_number+1;
+                $("#buy_number").val(buy_number);//购买数量+1，并显示值
+            }
+        })
 
-})
+        //给id为less绑定点击事件  ===点击 -
+        $(document).on("click","#less",function(){
+            //获取购买数量
+            var buy_number=parseInt($("#buy_number").val());
+            //判断购买数量是否小于1
+            if(buy_number<=1){
+                $("#buy_number").val(1);//购买数量<=1
+            }else{
+                buy_number=buy_number-1;//购买数量-1
+                $("#buy_number").val(buy_number);//购买数量-1后的值
+            }
+        })
+
+        //给id为buy_number绑定失去焦点事件 ===失去焦点
+        $(document).on("blur","#buy_number",function(){
+            //获取购买数量
+            var buy_number=$("#buy_number").val();
+            //获取库存的值
+            var goods_number=$("#goods_number").text();
+            //alert(goods_number);
+            var reg=/^\d+$/;//检测值最少为一位数字
+            if(buy_number==''){
+                $("#buy_number").val(1);//判断购买数量为空
+            }else if(!reg.test(buy_number)){
+                $("#buy_number").val(1);//判断购买数量是否为数字
+            }else if(parseInt(buy_number)<1){
+                $("#buy_number").val(1);//判断购买数量小于1
+            }else if(parseInt(buy_number)>=goods_number){
+                $("#buy_number").val(goods_number);//判断购买数量>库存
+            }else{
+                $("#buy_number").val(parseInt(buy_number));//判断购买数量改变为整数
+            }
+        })
+
+        $(document).on("click","#addcart",function(){
+            var goods_id=$("#goods_id").val();
+            var user_id=$("#user_id").val();
+            var buy_number=parseInt($("#buy_number").val());
+        $.ajax({
+            url: "/cart/cartlist/goods_id="+{{ $goods['goods_id'] }},
+            type: "post",
+            data:{goods_id:goods_id,buy_number:buy_number,user_id:user_id},
+            dataType: "json",
+            success: function(d){
+                // console.log(d)
+                if(d.errno==0){
+                	alert(d.msg)
+                	location.href ="/cart"
+                }
+            }
+        })
+    });
 </script>
+	

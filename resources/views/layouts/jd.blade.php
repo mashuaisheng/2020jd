@@ -29,12 +29,21 @@
 				<div class="shortcut">
 					<ul class="fl">
 						<li class="f-item">品优购欢迎您！</li>
-						<li class="f-item">请<a href="{{url('/login')}}" target="_blank">登录</a>　<span><a href="{{url('/register')}}" target="_blank">免费注册</a></span></li>
+						<!-- 判断用户是否登录 -->
+						@if(isset($_COOKIE['user_id']) && isset($_COOKIE['user_name']))
+						<li class="f-item">欢迎 {{$_COOKIE['user_name']}} 登录
+							<span><a href="{{url('/logout')}}">退出账号</a></span>
+							<input type="hidden"  id="user_id" name="user_id" value="{{$_COOKIE['user_id']}}">
+						</li>
+						@else
+						<li class="f-item">请<a href="{{url('/login')}}">登录</a><span>
+							<a href="{{url('/register')}}">免费注册</a></span></li>
+						@endif
 					</ul>
 					<ul class="fr">
 						<li class="f-item">我的订单</li>
 						<li class="f-item space"></li>
-						<li class="f-item"><a href="{{url('/search')}}" target="_blank">我的品优购</a></li>
+						<li class="f-item"><a href="{{url('/search')}}">我的品优购</a></li>
 						<li class="f-item space"></li>
 						<li class="f-item">品优购会员</li>
 						<li class="f-item space"></li>
@@ -52,7 +61,7 @@
 							</ul>
 						</li>
 						<li class="f-item space"></li>
-						<li class="f-item">网站导航</li>
+						<li class="f-item"><a href="{{url('/')}}">网站导航</a></li>
 					</ul>
 				</div>
 			</div>

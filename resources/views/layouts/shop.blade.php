@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="/static/css/pages-register.css" />
     <link rel="stylesheet" type="text/css" href="/static/css/webbase.css" />
     <link rel="stylesheet" type="text/css" href="/static/css/pages-login.css" />
+<script type="text/javascript" src="/static/plugins/jquery/jquery.min.js"></script>
 </head>
 <body>
 @yield('content')
@@ -31,7 +32,6 @@
 		</div>
 	</div>
 
-<script type="text/javascript" src="plugins/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="/static/js/plugins/jquery.easing/jquery.easing.min.js"></script>
 <script type="text/javascript" src="/static/js/plugins/sui/sui.min.js"></script>
 <script type="text/javascript" src="/static/js/plugins/jquery-placeholder/jquery.placeholder.min.js"></script>

@@ -2,20 +2,20 @@
 
 namespace App\Admin\Controllers;
 
-use App\Cate;
+use App\Model\CategoryModel;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
 
-class CatController extends AdminController
+class CategoryController extends AdminController
 {
     /**
      * Title for current resource.
      *
      * @var string
      */
-    protected $title = 'Cate';
+    protected $title = 'CategoryModel';
 
     /**
      * Make a grid builder.
@@ -24,10 +24,10 @@ class CatController extends AdminController
      */
     protected function grid()
     {
-        $grid = new Grid(new Cate());
+        $grid = new Grid(new CategoryModel());
 
-        $grid->column('cat_id', __('分类 id'));
-        $grid->column('cat_name', __('分类名称'));
+        $grid->column('cat_id', __('Cat id'));
+        $grid->column('cat_name', __('Cat name'));
         $grid->column('keywords', __('Keywords'));
         $grid->column('cat_desc', __('Cat desc'));
         $grid->column('parent_id', __('Parent id'));
@@ -39,7 +39,7 @@ class CatController extends AdminController
         $grid->column('is_show', __('Is show'));
         $grid->column('grade', __('Grade'));
         $grid->column('filter_attr', __('Filter attr'));
-        $grid->column('float_percent', __('上浮价格百分比'));
+        $grid->column('float_percent', __('Float percent'));
 
         return $grid;
     }
@@ -52,7 +52,7 @@ class CatController extends AdminController
      */
     protected function detail($id)
     {
-        $show = new Show(Cate::findOrFail($id));
+        $show = new Show(CategoryModel::findOrFail($id));
 
         $show->field('cat_id', __('Cat id'));
         $show->field('cat_name', __('Cat name'));
@@ -79,21 +79,21 @@ class CatController extends AdminController
      */
     protected function form()
     {
-        $form = new Form(new Cate());
-
-        $form->text('cat_name', __('Cat name'));
-        $form->text('keywords', __('Keywords'));
-        $form->text('cat_desc', __('Cat desc'));
-        $form->number('parent_id', __('Parent id'));
-        $form->switch('sort_order', __('Sort order'))->default(50);
-        $form->text('template_file', __('Template file'));
-        $form->text('measure_unit', __('Measure unit'));
-        $form->switch('show_in_nav', __('Show in nav'));
-        $form->text('style', __('Style'));
-        $form->switch('is_show', __('Is show'))->default(1);
-        $form->switch('grade', __('Grade'));
-        $form->text('filter_attr', __('Filter attr'));
-        $form->switch('float_percent', __('Float percent'));
+        $form = new Form(new CategoryModel());
+        $form->text('cat_name', __('分类名'));
+        //$form->text('keywords', __('Keywords'));
+        //$form->text('cat_desc', __('Cat desc'));
+        //$form->number('parent_id', __('父级分类'));
+        $form->select('parent_id', __('父级分类'))->options(CategoryModel::selectOptions());
+        $form->number('sort_order', __('排序'));
+        //$form->text('template_file', __('Template file'));
+        //$form->text('measure_unit', __('Measure unit'));
+        //$form->switch('show_in_nav', __('Show in nav'));
+        //$form->text('style', __('Style'));
+        //$form->switch('is_show', __('Is show'))->default(1);
+        //$form->switch('grade', __('Grade'));
+        //$form->text('filter_attr', __('Filter attr'));
+        //$form->switch('float_percent', __('Float percent'));
 
         return $form;
     }

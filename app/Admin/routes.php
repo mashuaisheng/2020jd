@@ -14,6 +14,6 @@ Route::group([
     $router->get('/admin', 'HomeController@index')->name('home');
     $router->resource('/users', UserController::class);
     $router->resource('/auth/goods', GoodsController::class);
-    $router->resource('/auth/cate', CatController::class);
+    $router->resource('/auth/category', CategoryController::class);   //分类管理
     $router->resource('/auth/users', UsersController::class);
 });
