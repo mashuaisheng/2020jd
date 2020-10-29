@@ -5,7 +5,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 	<title>品优购---@yield('title')</title>
-	 <link rel="icon" href="assets//static/img/favicon.ico">
+	 <link rel="icon" href="/static/img/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/static/css/webbase.css" />
     <link rel="stylesheet" type="text/css" href="/static/css/pages-JD-index.css" />
@@ -15,7 +15,7 @@
 
 	<link rel="stylesheet" type="text/css" href="/static/css/pages-list.css" />
     <link rel="stylesheet" type="text/css" href="/static/css/pages-item.css" />
-    <link rel="stylesheet" type="text/css" href="/static/css/pages-zoom.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/pages-zoom.css" /> 
 </head>
 
 <body>

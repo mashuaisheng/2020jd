@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\Index;
+use GuzzleHttp\Client;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Users;
 use Cookie;
+use App\Model\GithubUserModel;
 use Illuminate\Support\Str;
 use MongoDB\Driver\Session;
 use Illuminate\Support\Facades\Redis;
@@ -15,7 +17,7 @@ class LoginController extends Controller
     public function reg(){
     	return view('index.register');
     }
-
+    //用户进行注册
     public function regdo(request $request){
         $post=request()->except('_token');
         //表单验证
@@ -63,9 +65,8 @@ class LoginController extends Controller
     	}
         return redirect('/user/regist');
     }
-    
-    public function active(Request  $request)
-    {
+    //激活用户
+    public function active(Request  $request){
         $active_code = $request->get('code');
         echo "激活码：".$active_code;echo '</br>';
         $redis_active_key = 'ss:index:active';
@@ -84,12 +85,14 @@ class LoginController extends Controller
             echo "没有此用户";
             header("refresh:2;url=/register");
         }
-
     }
 
     //登录
     public function login(){
-    	return view('index.login');
+        $data = [
+            'login_url' => 'https://github.com/login/oauth/authorize?client_id=f84162d2f8c36be252c9'
+        ];
+    	return view('index.login',$data);
     }
 
     //进行登录
@@ -120,7 +123,7 @@ class LoginController extends Controller
         {
             die("用户不存在");
         }
-
+        
         $p=password_verify($password,$admin->password);//密码验证
         if(!$p)
         {
@@ -136,18 +139,101 @@ class LoginController extends Controller
         //登录成功
         if($admin){
             $admins=Users::where("user_id",$admin->user_id)->update($date);
+            session(['user_id'=>$admin['user_id'],'user_name'=>$admin['user_name']]);
             setcookie('user_id',$admin->user_id,time()+3600,'/');
             setcookie('user_name',$admin->user_name,time()+3600,'/');
             return redirect('/');
         }
+    }
+
+    //github登录
+    public function githubLogin(Request $request)
+    {
+        // 接收code
+        $code = $_GET['code'];
+        //换取access_token
+        $token = $this->getAccessToken($code);
+        //获取用户信息
+        $git_user = $this->getGithubUserInfo($token);
+        //判断用户是否已存在，不存在则入库新用户
+        $u = GithubUserModel::where(['guid'=>$git_user['id']])->first();
+        if($u)          //存在
+        {
+            //登录逻辑
+            $this->webLogin($u->uid);
+        }else{          //不存在
+            //在用户主表中创建新用户  获取 uid
+            $new_user = [
+                'user_name' => Str::random(10)              //生成随机用户名，用户有一次修改机会
+            ];
+            $uid = UserModel::insertGetId($new_user);
+            // 在 github 用户表中记录新用户
+            $info = [
+                'uid'                   => $uid,       //作为本站新用户
+                'guid'                  => $git_user['id'],         //github用户id
+                'avatar'                =>  $git_user['avatar_url'],
+                'github_url'            =>  $git_user['html_url'],
+                'github_username'       =>  $git_user['name'],
+                'github_email'          =>  $git_user['email'],
+                'add_time'              =>  time()
+            ];
+            $guid = GithubUserModel::insertGetId($info);        //插入新纪录
+            // TODO 登录逻辑
+            $this->webLogin($uid);
+        }
+        //将 token 返回给客户端
+        return redirect('/');       //登录成功 返回首页
+    }
+    /**
+     * 根据code 换取 token
+     */
+    protected function getAccessToken($code)
+    {
+        $url = 'https://github.com/login/oauth/access_token';
+
+        //post 接口  Guzzle or  curl
+        $client = new Client();
+        $response = $client->request('POST',$url,[
+            'verify'    => false,
+            'form_params'   => [
+                'client_id'         => env('OAUTH_GITHUB_ID'),
+                'client_secret'     => env('OAUTH_GITHUB_SEC'),
+                'code'              => $code 
+            ]
+        ]);
+        parse_str($response->getBody(),$str); // 返回字符串 access_token=59a8a45407f1c01126f98b5db256f078e54f6d18&scope=&token_type=bearer
+        return $str['access_token'];
+    }
+
+    /**
+     * 获取github个人信息
+     * @param $token
+     */
+    protected function getGithubUserInfo($token)
+    {
+        $url = 'https://api.github.com/user';
+        //GET 请求接口
+        $client = new Client();
+        $response = $client->request('GET',$url,[
+            'verify'    => false,
+            'headers'   => [
+                'Authorization' => "token $token"
+            ]
+        ]);
+        return json_decode($response->getBody(),true);
+    }
+
+    /**
+     * WEB登录逻辑
+     */
+    protected function webLogin($uid)
+    {
+
+        //将登录信息保存至session uid 与 token写入 seesion
+        session(['uid'=>$uid]);
 
     }
 
-    public function github(){
-        
-    }
-
-    
     //退出登录
     public function logout(){
         //清除session
@@ -157,3 +243,5 @@ class LoginController extends Controller
     }
 
 }
+
+ 

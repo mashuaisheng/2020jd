@@ -24,7 +24,8 @@ Route::get("/login","Index\LoginController@login");//登录
 Route::post("/logindo","Index\LoginController@logindo");//进行登录
 Route::get("/logout","Index\LoginController@logout");//退出登录
 
-Route::get("/github/callback","Index\LoginController@github");//github登录
+Route::any('/github/callback','Index\LoginController@githubLogin');//GITHUB登录
+
 
 
 Route::get("/search","Index\IndexController@search");//列表页
@@ -36,8 +37,16 @@ Route::any("/changeNumber","Index\CarController@changeNumber");//购物车方法
 
 Route::any("/orderInfo","Index\CarController@orderInfo");//结算
 
+
+Route::get("/prize","Index\PrizeController@prize");//抽奖
+Route::get("/prize/add","Index\PrizeController@add");//抽奖
+
+
+Route::get("/cinema","CinemaController@index");//电影院
+
 Route::get("/test","TestController@test");
 Route::get("/test1","TestController@test1");
+Route::get("/aaa","TestController@aaa");
 
 Route::get("/guzzle","TestController@guzzle");
 Route::get("/guzzlepost","TestController@guzzlepost");

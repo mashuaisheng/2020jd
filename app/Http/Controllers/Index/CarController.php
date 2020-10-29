@@ -10,10 +10,27 @@ class CarController extends Controller
 {
 	//购物车页面
     public function cart(){
-    	$cate=CartModel::leftjoin('p_goods','p_cart.goods_id','=','p_goods.goods_id')->limit(5)->get();
-    	// dd($cate);
-        return view('index.cart',['cate'=>$cate]);
+    	// $cate=CartModel::leftjoin('p_goods','p_cart.goods_id','=','p_goods.goods_id')->limit(5)->get();
+    	// // dd($cate);
+        $uid = session()->get('uid');
+        if(empty($uid))
+        {
+            return redirect('/login');
+        }
+        //取购物车商品信息
+        $list = CartModel::where(['uid'=>$uid])->get();
+        $goods = [];
+        foreach($list as $k=>$v)
+        {
+            $goods[] = GoodsModel::find($v['goods_id'])->toArray();
+        }
+        $cate = [
+            'goods' => $goods
+        ];
+		return view('index.cart',['cate'=>$cate]);
     }
+
+
 
     //购物车购买数量
 	public function changeNumber(){

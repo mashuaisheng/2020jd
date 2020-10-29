@@ -74,6 +74,14 @@ class TestController extends Controller
         echo '<pre>';print_r($data);echo '</pre>';
     }
 
-
+    public function aaa($a=0,&$result=array()){
+            $a++;
+            if ($a<10) {
+             $result[]=$a;
+             test($a,$result);
+            }
+            echo $a;
+            return $result;
+            }
 
 }

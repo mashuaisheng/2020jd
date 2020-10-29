@@ -102,20 +102,17 @@
 									<i>选择颜色</i>
 								</div>
 								</dt>
-								<dd><a href="javascript:;" class="selected">金色<span title="点击取消选择">&nbsp;</span>
-</a></dd>
+								<dd><a href="javascript:;" class="selected">金色<span title="点击取消选择">&nbsp;</span></a></dd>
 								<dd><a href="javascript:;">银色</a></dd>
 								<dd><a href="javascript:;">黑色</a></dd>
 							</dl>
-							
 							<dl>
 								<dt>
 									<div class="fl title">
 									<i>选择版本</i>
 								</div>
 								</dt>
-								<dd><a href="javascript:;" class="selected">公开版<span title="点击取消选择">&nbsp;</span>
-</a></dd>
+								<dd><a href="javascript:;" class="selected">公开版<span title="点击取消选择">&nbsp;</span></a></dd>
 								<dd><a href="javascript:;">移动版</a></dd>							
 							</dl>
 						</div>
@@ -134,6 +131,7 @@
 								<ul class="btn-choose unstyled">
 									<li>
 										<a href="javascript:void(0)" class="sui-btn  btn-danger addshopcar" id="addcart">加入购物车</a>
+										<a href="javascript:void(0)" class="sui-btn  btn-danger addshopcar" id="show">收藏</a>
 									</li>
 								</ul>
 							</div>
@@ -268,60 +266,6 @@
 					</div>
 				</div>
 				<div class="fr detail">
-					<div class="clearfix fitting">
-						<h4 class="kt">选择搭配</h4>
-						<div class="good-suits">
-							<div class="fl master">
-								<div class="list-wrap">
-									<div class="p-img">
-										<img src="/static/img/_/l-m01.png" />
-									</div>
-									<em>￥5299</em>
-									<i>+</i>
-								</div>
-							</div>
-							<div class="fl suits">
-								<ul class="suit-list">
-									<li class="">
-										<div id="">
-											<img src="/static/img/_/dp01.png" />
-										</div>
-										<i>Feless费勒斯VR</i>
-										<label data-toggle="checkbox" class="checkbox-pretty">
-    <input type="checkbox"><span>39</span>
-  </label>
-									</li>
-									<li class="">
-										<div id=""><img src="/static/img/_/dp02.png" /> </div>
-										<i>Feless费勒斯VR</i>
-										<label data-toggle="checkbox" class="checkbox-pretty">
-    <input type="checkbox"><span>50</span>
-  </label>
-									</li>
-									<li class="">
-										<div id=""><img src="/static/img/_/dp03.png" /></div>
-										<i>Feless费勒斯VR</i>
-										<label data-toggle="checkbox" class="checkbox-pretty">
-    <input type="checkbox"><span>59</span>
-  </label>
-									</li>
-									<li class="">
-										<div id=""><img src="/static/img/_/dp04.png" /></div>
-										<i>Feless费勒斯VR</i>
-										<label data-toggle="checkbox" class="checkbox-pretty">
-    <input type="checkbox"><span>99</span>
-  </label>
-									</li>
-								</ul>
-							</div>
-							<div class="fr result">
-								<div class="num">已选购0件商品</div>
-								<div class="price-tit"><strong>套餐价</strong></div>
-								<div class="price">￥5299</div>
-								<button class="sui-btn  btn-danger addshopcar">加入购物车</button>
-							</div>
-						</div>
-					</div>
 					<div class="tab-main intro">
 						<ul class="sui-nav nav-tabs tab-wraped">
 							<li class="active">
@@ -393,128 +337,6 @@
 			</div>
 			<!--like-->
 			<div class="clearfix"></div>
-			<!-- 猜你喜欢 -->
-			<div class="like">
-				<h4 class="kt">猜你喜欢</h4>
-				<div class="like-list">
-					<ul class="yui3-g">
-						<li class="yui3-u-1-6">
-							<div class="list-wrap">
-								<div class="p-img">
-									<img src="/static/img/_/itemlike01.png" />
-								</div>
-								<div class="attr">
-									<em>DELL戴尔Ins 15MR-7528SS 15</em>
-								</div>
-								<div class="price">
-									<strong>
-											<em>¥</em>
-											<i>3699.00</i>
-										</strong>
-								</div>
-								<div class="commit">
-									<i class="command">已有6人评价</i>
-								</div>
-							</div>
-						</li>
-						<li class="yui3-u-1-6">
-							<div class="list-wrap">
-								<div class="p-img">
-									<img src="/static/img/_/itemlike02.png" />
-								</div>
-								<div class="attr">
-									<em>Apple苹果iPhone 6s/6s Plus 16</em>
-								</div>
-								<div class="price">
-									<strong>
-											<em>¥</em>
-											<i>4388.00</i>
-										</strong>
-								</div>
-								<div class="commit">
-									<i class="command">已有700人评价</i>
-								</div>
-							</div>
-						</li>
-						<li class="yui3-u-1-6">
-							<div class="list-wrap">
-								<div class="p-img">
-									<img src="/static/img/_/itemlike03.png" />
-								</div>
-								<div class="attr">
-									<em>DELL戴尔Ins 15MR-7528SS 15</em>
-								</div>
-								<div class="price">
-									<strong>
-											<em>¥</em>
-											<i>4088.00</i>
-										</strong>
-								</div>
-								<div class="commit">
-									<i class="command">已有700人评价</i>
-								</div>
-							</div>
-						</li>
-						<li class="yui3-u-1-6">
-							<div class="list-wrap">
-								<div class="p-img">
-									<img src="/static/img/_/itemlike04.png" />
-								</div>
-								<div class="attr">
-									<em>DELL戴尔Ins 15MR-7528SS 15</em>
-								</div>
-								<div class="price">
-									<strong>
-											<em>¥</em>
-											<i>4088.00</i>
-										</strong>
-								</div>
-								<div class="commit">
-									<i class="command">已有700人评价</i>
-								</div>
-							</div>
-						</li>
-						<li class="yui3-u-1-6">
-							<div class="list-wrap">
-								<div class="p-img">
-									<img src="/static/img/_/itemlike05.png" />
-								</div>
-								<div class="attr">
-									<em>DELL戴尔Ins 15MR-7528SS 15</em>
-								</div>
-								<div class="price">
-									<strong>
-											<em>¥</em>
-											<i>4088.00</i>
-										</strong>
-								</div>
-								<div class="commit">
-									<i class="command">已有700人评价</i>
-								</div>
-							</div>
-						</li>
-						<li class="yui3-u-1-6">
-							<div class="list-wrap">
-								<div class="p-img">
-									<img src="/static/img/_/itemlike06.png" />
-								</div>
-								<div class="attr">
-									<em>DELL戴尔Ins 15MR-7528SS 15</em>
-								</div>
-								<div class="price">
-									<strong>
-											<em>¥</em>
-											<i>4088.00</i>
-										</strong>
-								</div>
-								<div class="commit">
-									<i class="command">已有700人评价</i>
-								</div>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</div>
 		</div>
 	</div>
 	@endsection
@@ -524,6 +346,10 @@
 <script type="text/javascript" src="/static/plugins/jquery/jquery.min.js"></script>
 
 <script type="text/javascript">
+	//收藏
+	$(document).on("click","#show",function(){
+		alert(11);
+	})
 	//给id为add绑定点击事件  ===点击 +
         $(document).on("click","#add",function(){
             //获取文本框的购买数量
@@ -541,7 +367,7 @@
 
         //给id为less绑定点击事件  ===点击 -
         $(document).on("click","#less",function(){
-            //获取购买数量
+
             var buy_number=parseInt($("#buy_number").val());
             //判断购买数量是否小于1
             if(buy_number<=1){

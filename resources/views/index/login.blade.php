@@ -50,10 +50,10 @@
 							<div class="otherlogin">
 								<div class="types">
 									<ul>
-										<li><img src="/static/img/qq.png" width="35px" height="35px" /></li>
-										<li><img src="/static/img/sina.png" /></li>
-										<li><img src="/static/img/ali.png" /></li>
-										<li><img src="/static/img/weixin.png" /></li>
+										<li><a href="{{$login_url}}"><img src="/static/img/qq.png" width="35px" height="35px" /></a></li>
+										<li><a href="{{$login_url}}"><img src="/static/img/sina.png" /></a></li>
+										<li><a href="{{$login_url}}"><img src="/static/img/ali.png" /></a></li>
+										<li><a href="{{$login_url}}"><img src="/static/img/weixin.png" /></a></li>
 									</ul>
 								</div>
 								<span class="register"><a href="{{url('register')}}">立即注册</a></span>

@@ -11,7 +11,7 @@ class IndexController extends Controller
 {
 	//首页
     public function index(){
-        session_start();
+        //session_start();
     	return view('index.index');
     }
 
